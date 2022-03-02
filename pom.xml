@@ -9,12 +9,11 @@
 		<version>2.3.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>miage.brisonpincon</groupId>
+	<groupId>fr.ippon.epitech</groupId>
 	<artifactId>zuul</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zuul</name>
 	<packaging>jar</packaging>
-	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
