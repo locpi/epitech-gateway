@@ -6,8 +6,8 @@ def gitCommit = ""
 def author = ""
 def errorString
 def commit
-MAVEN_OPTS = "-B -V -U -e -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -s /settings.xml"
-MAVEN_OPTS_NO_FORCE_UPDATE = "-B -V -e -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn -s /settings.xml"
+MAVEN_OPTS = "-B -V -U -e -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn "
+MAVEN_OPTS_NO_FORCE_UPDATE = "-B -V -e -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn "
 MAVEN_SKIP_TESTS = "-DskipTests"
 MAVEN_SKIP_TESTS_WITH_OPTS = "${MAVEN_OPTS} ${MAVEN_SKIP_TESTS}"
 node {
