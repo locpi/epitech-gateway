@@ -37,7 +37,7 @@ node {
 
             stage('Docker Images') {
                 parallel 'gateway': {
-                    app = docker.build("gateway", '--pull -f Dockerfile . ')
+                    sh "docker build -t epitech/gateway:latest ."
                 }
             }
         }
