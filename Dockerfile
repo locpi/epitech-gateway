@@ -1,4 +1,4 @@
-FROM java:8-jdk-alpine
+FROM adoptopenjdk/openjdk11:latest
 
 COPY ./target/zuul.jar /usr/app/
 
