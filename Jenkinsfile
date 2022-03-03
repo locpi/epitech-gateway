@@ -24,16 +24,14 @@ node {
 
             }
             stage('Clean') {
-                withDockerContainer(image: "maven:3.6-openjdk-16-slim", args: '-v /data/.npm:/.npm -v /data/.m2:/home/jenkins/.m2 -v /home/jenkins/settings.xml:/settings.xml') {
                     sh "mvn clean ${MAVEN_OPTS}"
-                }
+
             }
 
 
             stage('Build') {
-                withDockerContainer(image: "maven:3.6-openjdk-16-slim", args: '-v /data/.npm:/.npm -v /data/.m2:/home/jenkins/.m2 -v /home/jenkins/settings.xml:/settings.xml') {
                     sh "mvn verify failsafe:integration-test surefire:test  install -P-webpack ${MAVEN_OPTS}"
-                }
+
             }
 
 
