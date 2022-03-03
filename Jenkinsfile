@@ -36,20 +36,8 @@ node {
 
 
             stage('Docker Images') {
-                parallel 'eyrh-legacy': {
-                    app = docker.build("${tomcatPrimoboxEyrhLegacy}", '--pull -f deploy/images/Dockerfile . ')
-                    docker.withRegistry('https://harbor.primobox.net', 'jenkins_harbor') {
-                        app.push()
-                        app.push(commit)
-                    }
-                }, 'eyrh': {
-                    docker.withRegistry('https://harbor.primobox.net', 'jenkins_harbor') {
-                        withDockerContainer(image: "maven:3.6-openjdk-16-slim", args: '-v /data/.npm:/.npm -v /data/.m2:/home/jenkins/.m2 -v /home/jenkins/settings.xml:/settings.xml') {
-                            gitlabCommitStatus(name: 'Build image eyrh') {
-                                sh "mvn -pl eyrh/presentation ${MAVEN_OPTS_NO_FORCE_UPDATE} ${MAVEN_SKIP_TESTS}  -Pprod package com.google.cloud.tools:jib-maven-plugin:3.0.0:build -Djib.to.image=harbor.primobox.net/${tomcatPrimoboxImageEyrh} -Djib.to.tags=${commit}"
-                            }
-                        }
-                    }
+                parallel 'gateway': {
+                    app = docker.build("gateway", '--pull -f Dockerfile . ')
                 }
             }
         }
