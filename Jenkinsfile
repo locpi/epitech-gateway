@@ -14,7 +14,7 @@ node {
     try {
         timestamps {
             stage('Checkout') {
-            sh "echo "$USER""
+            sh "echo $USER"
                 checkout scm
                 gitCommit = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim().replace("'", "")
                 commit = sh(returnStdout: true, script: 'git rev-parse HEAD')
